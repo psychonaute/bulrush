@@ -1,0 +1,41 @@
+@charset "utf-8";
+
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:regular');
+
+
+// Set your brand colors
+$imperial-red: #E63946;
+$blue: #457b9d;
+$blue-metal: #1D3557;
+$beige-light: #fff6e9;
+$beige-lighter: #fafafa;
+
+// Update Bulma's global variables
+$family-sans-serif: "Oswald", sans-serif;
+$family-secondary: "Lato", sans-serif;
+$grey-dark: $blue-metal;
+$grey-light: $beige-light;
+$primary: $blue-metal;
+$secondary: $imperial-red;
+$link: $imperial-red;
+$widescreen-enabled: false;
+$fullhd-enabled: false;
+
+// Update some of Bulma's component variables
+$body-background-color: $beige-lighter;
+$control-border-width: 2px;
+$input-border-color: transparent;
+$input-shadow: none;
+
+// Navbar
+article .section, section#content {
+  p, ul, ol, li {
+    font-family: $family-secondary;
+  }
+}
+
+
+@import "../../mybulma/node_modules/bulma/bulma.sass";

@@ -5,14 +5,17 @@
   <meta name="viewport" content="width=device-width">
   <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
-  {% assets output="css/main.%(version)s.css", "css/main.css" %}
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"> -->
+  {% assets filters="scss,cssmin", output="css/mybulma.css", "sass/mystyle.scss" %}
+    <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+  {% endassets %}
+  {% assets filters="less,cssmin", output="css/thememod.css", "less/main.less", "less/highlight.less" %}
     <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
   {% endassets %}
   <style media="print">.is-hidden-print{display:none !important}</style>
   {% for extra_path in EXTRA_PATH_METADATA.values() %}
     {% if extra_path.get('path', '').endswith('.css') %}
-      <link rel="stylesheet" href="{{ SITEURL }}/{{ extra_path['path'] }}">
+      <link rel="stylesheet" href="{{ SITEURL }}/{{ extra_path['path'] }}">c
     {% endif %}
   {% endfor %}
   {% block tags %}
@@ -20,42 +23,45 @@
 </head>
 
 <body id="index" class="home">
-<header class="hero is-primary">
-  <div class="hero-head">
-    <div class="container">
-      <nav class="navbar">
-        <div class="navbar-brand">
-          <a class="navbar-item title is-3{% if output_file == "index.html" %} is-active{% endif %}"
-             href="{{ SITEURL }}/">{{ SITENAME }}</a>
+<header class="hero">
+  <div class="columns px-5 is-vcentered">
+    <div class="column">
+      <div class="title has-text-weight-semibold has-text-primary is-3 is-size-5-mobile">
+        {{ SITENAME }}
+      </div>
+    </div>
+    <div class="column">
+      <div id="navMenu" class="column navbar-menu">
+          <div class="navbar-end">
+              {% for item_title, item_url, subitems in MENUITEMS_NAVBAR %}
+              {% if subitems %}
+              <div class="navbar-item has-dropdown is-hoverable">
+                  <a class="navbar-link" href="{{ SITEURL }}/{{ item_url }}">
+                      {{ item_title.upper() }}
+                  </a>
+                  <div class="navbar-dropdown">
+                      {% for subitem_title, subitem_url in subitems %}
+                      <a class="navbar-item" href="{{ SITEURL }}/{{ subitem_url }}">
+                          {{ subitem_title.capitalize() }}
+                      </a>
+                      {% endfor %}
+                  </div>
+              </div>
+              {% else %}
+              <a class="navbar-item is-tab" href="{{ SITEURL }}/{{ item_url }}">
+                  {{ item_title.upper() }}
+              </a>
+              {% endif %}
+              {% endfor %}
+              <a class="navbar-item ml-5 button is-primary is-medium " href="{{ SITEURL }}/pages/awl-membership-form.html">
+                JOIN AWL
+              </a>
+          </div>
         </div>
-      </nav>
     </div>
   </div>
+</div>
 </header>
-
-<nav class="navbar has-shadow is-hidden-print">
-  <div class="container">
-    <div class="navbar-center"></div>
-    <span id="navToggle" class="navbar-burger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </span>
-    <div id="navMenu" class="navbar-menu">
-        <div class="navbar-end">
-          {% for title, link in MENUITEMS|reverse %}
-            <a class="navbar-item is-tab" href="{{ link }}">{{ title }}</a>
-          {% endfor %}
-          {% if DISPLAY_CATEGORIES_ON_MENU %}
-            {% for cat, null in categories|reverse %}
-              <a class="navbar-item is-tab {% if cat == category %}is-active{% endif %}"
-                 href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
-            {% endfor %}
-          {% endif %}
-        </div>
-    </div>
-  </div>
-</nav>
 
 <div class="container">
   <div class="section columns">
