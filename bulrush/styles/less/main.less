@@ -3,7 +3,11 @@
 @darker-grey: #363636;
 // @primary: #00d1b2;
 
-// @import "highlight";
+@import "highlight";
+
+// Import a Google Font
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:regular');
 
 header .hero-head {
     padding: 1em;
@@ -175,4 +179,68 @@ only screen and (min-device-pixel-ratio: 1.5) {
 abbr[title], acronym[title] {
   // override Chrome/Firefox UA stylesheet
   text-decoration: none;
+}
+
+
+// My modif
+
+
+.is-link, a {
+  color: #54d5a2; 
+}
+
+.menu a, .navbar-item, .navbar-item button {
+  color: #1D3557; 
+}
+
+.navbar-item button {
+  background-color: #1D3557;
+}
+
+// Navbar
+h1, h2, h3, h4, h5, h6, .title, .navbar-brand, #navMenu a {
+  font-family: "Oswald", sans-serif;
+}
+
+// hero
+.hero-body .columns.is-multiline h1, h2, h3 {
+color: #fafafa;
+text-align: center;
+}
+
+.footer {
+box-shadow: 0 -3px 5px 0 rgba(#000, 0.1);
+}
+
+body {
+  background-color: #fafafa;
+  font-family: Lato;
+  font-size: 1.1em;
+}
+
+// temp org_awl color not good contrast
+.card-content a{
+filter: brightness(65%);
+}
+
+// Tags cloud plugin
+
+
+// use nb of steps TAG_CLOUD_STEPS
+@iterations: 4;
+.li-loop (@i) when (@i > 0) {
+    li.tag-@{i} {
+      font-size: (100 / @i + 50%);
+    }
+    .li-loop(@i - 1);
+}
+.li-loop (@iterations);
+
+.tag {
+  background-color: #b9f0d9 !important;
+}
+
+// to stop very long link to overshoot the div
+a {
+  word-wrap: break-word;
 }

@@ -12,15 +12,18 @@ $blue: #457b9d;
 $blue-metal: #1D3557;
 $beige-light: #fff6e9;
 $beige-lighter: #fafafa;
+$black: #000000;
+$org_awl: #54d5a2;
+
 
 // Update Bulma's global variables
-$family-sans-serif: "Oswald", sans-serif;
-$family-secondary: "Lato", sans-serif;
+$family-sans-serif: "Lato", sans-serif;
+$family-secondary: "Oswald", sans-serif;
 $grey-dark: $blue-metal;
 $grey-light: $beige-light;
 $primary: $blue-metal;
-$secondary: $imperial-red;
-$link: $imperial-red;
+$secondary: $org_awl;
+$link: $org_awl;
 $widescreen-enabled: false;
 $fullhd-enabled: false;
 
@@ -31,11 +34,25 @@ $input-border-color: transparent;
 $input-shadow: none;
 
 // Navbar
-article .section, section#content {
-  p, ul, ol, li {
+h1, h2, h3, h4, h5, h6, .title, .navbar-brand, #navMenu a {
     font-family: $family-secondary;
-  }
+}
+
+// hero
+.hero-body .columns.is-multiline h1, h2, h3 {
+  color: $beige-lighter;
+  text-align: center;
+}
+
+.footer {
+  box-shadow: 0 -3px 5px 0 rgba($black, 0.1);
 }
 
 
-@import "../../mybulma/node_modules/bulma/bulma.sass";
+
+// temp org_awl color not good contrast
+.card-content a{
+  filter: brightness(65%);
+}
+
+// @import "../../mybulma/node_modules/bulma/bulma.sass";

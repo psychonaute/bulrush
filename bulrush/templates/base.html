@@ -2,13 +2,20 @@
 <html lang="{{ DEFAULT_LANG }}">
 <head prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article#">
   <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="/favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"/>
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png"/>
+  <link rel="apple-touch-icon" href="/apple-touch-icon-60x60.png"/>
   <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"> -->
-  {% assets filters="scss,cssmin", output="css/mybulma.css", "sass/mystyle.scss" %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
+
+  <!-- {% assets filters="scss,cssmin", output="css/mybulma.css", "sass/mystyle.scss" %}
     <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
-  {% endassets %}
+  {% endassets %} -->
   {% assets filters="less,cssmin", output="css/thememod.css", "less/main.less", "less/highlight.less" %}
     <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
   {% endassets %}
@@ -23,46 +30,112 @@
 </head>
 
 <body id="index" class="home">
-<header class="hero">
-  <div class="columns px-5 is-vcentered">
-    <div class="column">
-      <div class="title has-text-weight-semibold has-text-primary is-3 is-size-5-mobile">
-        {{ SITENAME }}
-      </div>
-    </div>
-    <div class="column">
-      <div id="navMenu" class="column navbar-menu">
-          <div class="navbar-end">
-              {% for item_title, item_url, subitems in MENUITEMS_NAVBAR %}
-              {% if subitems %}
-              <div class="navbar-item has-dropdown is-hoverable">
-                  <a class="navbar-link" href="{{ SITEURL }}/{{ item_url }}">
-                      {{ item_title.upper() }}
-                  </a>
-                  <div class="navbar-dropdown">
-                      {% for subitem_title, subitem_url in subitems %}
-                      <a class="navbar-item" href="{{ SITEURL }}/{{ subitem_url }}">
-                          {{ subitem_title.capitalize() }}
-                      </a>
-                      {% endfor %}
-                  </div>
-              </div>
-              {% else %}
-              <a class="navbar-item is-tab" href="{{ SITEURL }}/{{ item_url }}">
-                  {{ item_title.upper() }}
+{% if output_file == "12345678912346789.html" %}
+<section class="hero is-fullheight">
+  <!-- Hero head: will stick at the top -->
+  <div class="hero-head">
+    {% include 'navbar.html' %}
+  </div>
+
+  <!-- Hero content: will be in the middle -->
+  <div class="hero-body has-background-primary">
+    <div class="container">
+      <div class="columns is-centered is-vcentered">
+        <div class="column is-half">
+          <h3 class="subtitle has-text-left has-text-centered-mobile has-text-link has-text-weight-light">
+            ASSOCIATION OF WOMEN LAWYERS &nbsp;|&nbsp; MALAYSIA
+          </h3>
+          <h1 class="title has-text-centered-mobile has-text-white-ter has-text-weight-normal">
+            NGO FOUNDED 2009 FOR THE PROMOTION OF THE RIGHTS, WELFARE AND PROFESSIONAL DEVELOPMENT OF WOMEN LAWYERS
+          </h1>
+        </div>
+        <div class="column">
+          <div class="columns is-mobile is-multiline is-vcentered">
+            <div class=" column is-full">
+              <h1 class="title has-text-white-ter has-text-weight-normal">
+                OUR MISSION
+              </h1>
+            </div>
+            <div class="column is-one-fifth">
+              <a href="{{ SITEURL }}/pages/about-us.html">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="{{ SITEURL }}/static/images/icons/promote_light.svg">
+                  <h3>Promote </h3>
+                </figure>
               </a>
-              {% endif %}
-              {% endfor %}
-              <a class="navbar-item ml-5 button is-primary is-medium " href="{{ SITEURL }}/pages/awl-membership-form.html">
-                JOIN AWL
+            </div>
+            <div class="column is-one-fifth">
+              <a href="{{ SITEURL }}/pages/about-us.html">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="{{ SITEURL }}/static/images/icons/provide_light.svg">
+                  <h3>Provide </h3>
+                </figure>
               </a>
+            </div>
+            <div class="column is-one-fifth">
+              <a href="{{ SITEURL }}/pages/about-us.html">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="{{ SITEURL }}/static/images/icons/monitor_light.svg">
+                  <h3>Monitor </h3>
+                </figure>
+              </a>
+            </div>
+            <div class="column is-one-fifth">
+              <a href="{{ SITEURL }}/pages/about-us.html">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="{{ SITEURL }}/static/images/icons/collaborate_light.svg">
+                  <h3>Collaborate</h3>
+                </figure>
+              </a>
+            </div>
+            <div class="column is-one-fifth">
+              <a href="{{ SITEURL }}/pages/about-us.html">
+                <figure class="image is-64x64">
+                  <img class="is-rounded" src="{{ SITEURL }}/static/images/icons/liaise_light.svg">
+                  <h3>Liaise</h3>
+                </figure>
+              </a>
+            </div>
           </div>
         </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
+{% else %}
+<header class="hero has-background-white card-header">
+  {% include 'navbar.html' %}
 </header>
+{% endif %}
 
+{% if output_file == "index.html" %}
+<!-- Start Hero Carousel -->
+<section class="hero is-large has-carousel">
+  <div id="carousel-demo" class="hero-carousel">
+    <div class="item-1">
+      <figure class="image">
+        <img src="{{ SITEURL }}/static/images/carousel/slide-image-1.jpg">
+      </figure>
+    </div>
+    <div class="item-2">
+      <figure class="image">
+        <img src="{{ SITEURL }}/static/images/carousel/slide-image-2.jpg">
+      </figure>
+    </div>
+    <div class="item-3">
+      <figure class="image">
+        <img src="{{ SITEURL }}/static/images/carousel/slide-image-3.jpg">
+      </figure>
+    </div>
+  </div>
+  <div class="hero-head"></div>
+  <div class="hero-body"></div>
+  <div class="hero-foot"></div>
+</section>
+<!-- End Hero Carousel -->
+{% endif %}
+
+{% if output_file != "12345678912346789.html" %}
 <div class="container">
   <div class="section columns">
     <div class="column is-three-quarters-desktop is-two-thirds-tablet">
@@ -100,6 +173,21 @@
             {% endfor %}
           </ul>
         {% endif %}
+        {% if tag_cloud is defined  %}
+          <p class="menu-label">Tag Cloud</p>
+          <ul class="tagcloud tags">
+            {% for tag in tag_cloud %}
+                <li class="tag tag-{{ tag.1 }}">
+                    <a href="{{ SITEURL }}/{{ tag.0.url }}">
+                    {{ tag.0 }}
+                        {% if TAG_CLOUD_BADGE %}
+                            <span class="badge">{{ tag.2 }}</span>
+                        {% endif %}
+                    </a>
+                </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
         {% if SOCIAL or FEED_ALL_ATOM or FEED_ALL_RSS %}
           {% include 'social.html' %}
         {% endif %}
@@ -111,8 +199,9 @@
     </div>
   </div>
 </div>
+{% endif %}
 
-<footer class="footer">
+<footer class="footer has-background-white" >
   <div class="container has-text-centered">
     {% if SITESUBTITLE %} <p class="subtitle">{{ SITESUBTITLE }}</p>{% endif %}
     <div class="credits">
@@ -128,15 +217,46 @@
 
 {% include 'analytics.html' %}
 {% include 'disqus_script.html' %}
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/js/bulma-carousel.min.js"></script>
+<script>
+    bulmaCarousel.attach('#carousel-demo', {
+        slidesToScroll: 1,
+        slidesToShow: 1,
+        loop: true,
+        pauseOnHover: false,
+
+    });
+
+</script>
+
+
 <script type="text/javascript">
-  document.getElementById('navToggle').addEventListener('click', function () {
-    var nav = document.getElementById('navMenu');
-    var className = nav.getAttribute('class');
-    if (className == 'navbar-menu') {
-      nav.className = 'navbar-menu is-active';
-    } else {
-      nav.className = 'navbar-menu';
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+
+  // Get all "navbar-burger" elements
+  const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+
+  // Check if there are any navbar burgers
+  if ($navbarBurgers.length > 0) {
+
+    // Add a click event on each of them
+    $navbarBurgers.forEach( el => {
+      el.addEventListener('click', () => {
+
+        // Get the target from the "data-target" attribute
+        const target = el.dataset.target;
+        const $target = document.getElementById(target);
+
+        // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+        el.classList.toggle('is-active');
+        $target.classList.toggle('is-active');
+
+      });
+    });
+  }
+
   });
 </script>
 </body>

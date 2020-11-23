@@ -1,0 +1,52 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item pl-5" href="{{ SITEURL }}">
+      <img src="{{ SITEURL }}/static/images/icons/awl.svg" width="50" height="36">
+    </a>
+    <div class="navbar-item is-size-3-desktop is-size-4-tablet is-size-6-mobile">
+      {{ SITENAME }}
+    </div>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-start">
+
+    </div>
+
+    <div class="navbar-end">
+      {% for item_title, item_url, subitems in MENUITEMS_NAVBAR %}
+      {% if subitems %}
+      <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="{{ SITEURL }}/{{ item_url }}">
+              {{ item_title.upper() }}
+          </a>
+          <div class="navbar-dropdown">
+              {% for subitem_title, subitem_url in subitems %}
+              <a class="navbar-item" href="{{ SITEURL }}/{{ subitem_url }}">
+                  {{ subitem_title.capitalize() }}
+              </a>
+              {% endfor %}
+          </div>
+      </div>
+      {% else %}
+
+      <a class="navbar-item" href="{{ SITEURL }}/{{ item_url }}">
+          {{ item_title.upper() }}
+      </a>
+
+      {% endif %}
+      {% endfor %}
+      <div class="navbar-item">
+        <a class="button is-primary is-medium " href="{{ SITEURL }}/pages/awl-membership-form.html">
+          JOIN AWL
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>  
+
