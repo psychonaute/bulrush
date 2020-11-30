@@ -19,8 +19,10 @@
           {{ author }}
         {% endif %}
       {% endfor %}</em>
-      {% include 'taglist.html' %}
     </p>
+    <div class="tags">
+      {% include 'taglist.html' %}
+    <div/>
   {% endif %}
   {% import 'translations.html' as translations with context %}
   {{ translations.translations_for(article) }}

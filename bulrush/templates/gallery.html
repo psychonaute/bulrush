@@ -1,0 +1,31 @@
+
+{% set nb_col = 3 %}
+<div class="container is-fluid gallery">
+    <div class="columns">
+      {% for col in range(nb_col) %}
+      <div class="column">
+        {% set col_num = loop.index %}
+        {% for img in article.galleryimages[col::nb_col] %}
+        <figure class="image is-clickable">
+          <img src="{{ SITEURL }}/static/images/gallery/{{ article.album }}/{{ img }}" onclick='openModal();currentSlide("{{col_num+loop.index0*nb_col}}")'>
+        </figure>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="modal" id="myModal">
+      <div class="modal-content is-vcentered">
+        {% for img in article.galleryimages %}
+        <div class="item-slide">
+          <figure class="image"></figure>
+            <img src="{{ SITEURL }}/static/images/gallery/{{ article.album }}/{{ img }}">
+          </figure>
+        </div>
+        {% endfor %}
+      </div>
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    <button onclick="closeModal()" class="modal-close is-large" aria-label="close"></button>
+  </div>
+</div>

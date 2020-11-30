@@ -13,12 +13,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.1/css/bulma.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css">
 
-  <!-- {% assets filters="scss,cssmin", output="css/mybulma.css", "sass/mystyle.scss" %}
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
-  {% endassets %} -->
+  
   {% assets filters="less,cssmin", output="css/thememod.css", "less/main.less", "less/highlight.less" %}
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
+  <link rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}">
   {% endassets %}
+
+  {% assets filters="uglifyjs", output="gallery.min.js", "gallery.js" %}
+  <script src="{{ SITEURL }}/{{ ASSET_URL }}"></script>
+  {% endassets %}
+
   <style media="print">.is-hidden-print{display:none !important}</style>
   {% for extra_path in EXTRA_PATH_METADATA.values() %}
     {% if extra_path.get('path', '').endswith('.css') %}
