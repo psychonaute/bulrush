@@ -7,7 +7,7 @@
         {% set col_num = loop.index %}
         {% for img in article.galleryimages[col::nb_col] %}
         <figure class="image is-clickable">
-          <img src="{{ SITEURL }}/static/images/gallery/{{ article.album }}/{{ img }}" onclick='openModal();currentSlide("{{col_num+loop.index0*nb_col}}")'>
+          <img src="{{ SITEURL }}/static/images/gallery/{{ article.album }}/{{ img }}" onclick="openModal();currentSlide({{col_num+loop.index0*nb_col}})">
         </figure>
         {% endfor %}
       </div>
